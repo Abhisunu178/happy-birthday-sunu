@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Tanushree ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffd1dc, #e6ccff);
+    overflow-x: hidden;
+}
+
+/* Floating Hearts */
+.hearts {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.heart {
+    position: absolute;
+    color: rgba(255, 105, 180, 0.6);
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 0; }
+    100% { transform: translateY(-10vh); opacity: 1; }
+}
+
+section {
+    padding: 60px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h1, h2 {
+    font-family: 'Pacifico', cursive;
+}
+
+/* Hero */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+}
+
+/* Gallery Grid */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.gallery img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Lightbox */
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 15px;
+}
+
+/* Letter Style */
+.letter {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+/* Button */
+button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background: #ff69b4;
+    color: white;
+    cursor: pointer;
+}
+
+#surprise {
+    display: none;
+    margin-top: 20px;
+    font-size: 1.5rem;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background: #ff9a9e;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<!-- Hero -->
+<section class="hero show">
+    <h1 id="typing"></h1>
+    <p>You make my world beautiful every single day ❤️</p>
+</section>
+
+<!-- Gallery -->
+<section>
+    <h2>Our Beautiful Moments ❤️</h2>
+    <div class="gallery">
+        <img src="pinu1.jpeg" onclick="openImage(this.src)">
+        <img src="pinu2.jpeg" onclick="openImage(this.src)">
+        <img src="pinu4.jpeg" onclick="openImage(this.src)">
+    </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeImage()">
+    <img id="lightbox-img">
+</div>
+
+<!-- Love Letter -->
+<section>
+    <h2>My Love Letter 💌</h2>
+    <div class="letter">
+        <p>
+			Dear Sunu,<br>
+            You are the most beautiful part that could have ever occurred in my life.  
+            Every moment with you feels magical.<br><br>
+            I am always grateful to have you. I promise to always stand by you forever  
+            and be less of a headache.<br><br>
+            I love you ❤️
+        </p>
+        </p>
+    </div>
+</section>
+
+<section>
+    <h2>For You ❤️</h2>
+    <div class="letter">
+        <p>
+            Sunu,<br><br>
+            There are so many things about you that I admire and love deeply.<br><br>
+
+            I admire your beautiful smile that can light up even my worst days.  
+            I admire your kindness and the way you care for me, whether I'm around or not.  
+            I admire your strength and how you handle everything so gracefully.<br><br>
+
+            I love the way you understand me, and I truly wish to understand you the same way.  
+            I know I’ve made many promises, and I will do everything to make each one count.<br><br>
+
+            I love you more than anything, and I would never want to lose you ❤️  
+            You are truly my — and everyone’s — Kohinoor 💎
+        </p>
+    </div>
+</section>
+
+<!-- Surprise -->
+<section>
+    <h2>Special Surprise 🎁</h2>
+    <button onclick="showSurprise()">Click for Surprise</button>
+    <div id="surprise">I Love You Forever ❤️</div>
+</section>
+
+<footer>
+    Once again Happy Birthday Gunu ❤️
+</footer>
+
+<script>
+// Typing Effect
+let text = "Happy Birthday Sunu ❤️";
+let i = 0;
+function type() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, 80);
+    }
+}
+type();
+
+// Scroll Animation
+window.addEventListener("scroll", () => {
+    document.querySelectorAll("section").forEach(sec => {
+        let top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            sec.classList.add("show");
+        }
+    });
+});
+
+// Surprise
+function showSurprise() {
+    document.getElementById("surprise").style.display = "block";
+}
+
+// Lightbox
+function openImage(src) {
+    document.getElementById("lightbox").style.display = "flex";
+    document.getElementById("lightbox-img").src = src;
+}
+
+function closeImage() {
+    document.getElementById("lightbox").style.display = "none";
+}
+
+// Floating Hearts
+function createHeart() {
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.getElementById("hearts").appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
